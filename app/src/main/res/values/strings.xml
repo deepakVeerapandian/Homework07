@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Homework07</string>
+    <string name="Login">Login</string>
+    <string name="signUp">Sign Up</string>
+    <string name="et_email_signup">Email</string>
+    <string name="lbl_email_signup">Email</string>
+    <string name="lbl_password_signup">Password</string>
+    <string name="btn_login">Login</string>
+    <string name="btn_signup_signUp">SignUp</string>
+    <string name="et_firstName">First Name</string>
+    <string name="et_lastName">Last Name</string>
+    <string name="et_choosePassword">Password</string>
+    <string name="btn_signup_signup">SignUp</string>
+    <string name="cancel">Cancel</string>
+    <string name="username">Username</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="gender">Gender :</string>
+    <string name="user_name">Username :</string>
+    <string name="first_name">FirstName :</string>
+    <string name="last_name">LastName :</string>
+    <string name="pass_word">Password :</string>
+    <string name="save">Save</string>
+</resources>
