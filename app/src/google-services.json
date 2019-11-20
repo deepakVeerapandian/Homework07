@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "74600005809-84r1m98o6akodcg5b2te958cdt8msv5a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.homework07",
+            "certificate_hash": "3db8ad45dc601fe941de61899a960212a64dfc58"
+          }
+        },
+        {
           "client_id": "74600005809-k4kv04a3q5tl8625i9a5n32sljrhrnk8.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -28,7 +36,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "74600005809-k4kv04a3q5tl8625i9a5n32sljrhrnk8.apps.googleusercontent.com",
+              "client_id": "74600005809-jp45fvcr3n4h9tt8u0mdkq6s0t0vsotq.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
