@@ -32,7 +32,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
-
+//added rushiu
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
     private FirebaseAuth firebaseAuth;
