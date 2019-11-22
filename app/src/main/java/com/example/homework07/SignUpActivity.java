@@ -48,72 +48,72 @@ public class SignUpActivity extends AppCompatActivity {
         rg_gender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch(checkedId){
-                    case R.id.radioBtbMale:
-                        gender = "Male";
-                        break;
-                    case R.id.radioBtnFemale:
-                        gender = "Female";
-                        break;
-                }
+            switch(checkedId){
+                case R.id.radioBtbMale:
+                    gender = "Male";
+                    break;
+                case R.id.radioBtnFemale:
+                    gender = "Female";
+                    break;
+            }
             }
         });
 
         btn_signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String firstName = et_firstName.getText().toString();
-                String lastName = et_lastName.getText().toString();
-                final String userName = et_userName.getText().toString();
-                String password = et_password.getText().toString();
-                int errorFlag=0;
-                if(firstName.equals("")){
-                    et_firstName.setError("Enter a valid FirstName");
-                    errorFlag=1;
-                }
-                if (lastName.equals("")) {
-                    et_lastName.setError("Enter a valid LastName ");
-                    errorFlag=1;
-                }
-                if(userName.equals("")){
-                    et_userName.setError("Enter a valid Email");
-                    errorFlag=1;
-                }
-                if(password.equals(""))
-                {
-                    et_password.setError("Enter a valid password");
-                    errorFlag=1;
-                }
-                if(gender == ""){
-                    Toast.makeText(SignUpActivity.this, "Select a gender", Toast.LENGTH_SHORT).show();
-                    errorFlag = 1;
-                }
-                if(errorFlag == 0)
-                {
+            String firstName = et_firstName.getText().toString();
+            String lastName = et_lastName.getText().toString();
+            final String userName = et_userName.getText().toString();
+            String password = et_password.getText().toString();
+            int errorFlag=0;
+            if(firstName.equals("")){
+                et_firstName.setError("Enter a valid FirstName");
+                errorFlag=1;
+            }
+            if (lastName.equals("")) {
+                et_lastName.setError("Enter a valid LastName ");
+                errorFlag=1;
+            }
+            if(userName.equals("")){
+                et_userName.setError("Enter a valid Email");
+                errorFlag=1;
+            }
+            if(password.equals(""))
+            {
+                et_password.setError("Enter a valid password");
+                errorFlag=1;
+            }
+            if(gender == ""){
+                Toast.makeText(SignUpActivity.this, "Select a gender", Toast.LENGTH_SHORT).show();
+                errorFlag = 1;
+            }
+            if(errorFlag == 0)
+            {
+                User user = new User(1, userName, password, firstName, lastName, "",  gender);
 
-                    User user = new User(1, userName, password, firstName, lastName, "",  gender);
-
-                    Map<String , Object> movieMap = user.toHashMap();
-                    db.collection("User").document(userName)
-                            .set(movieMap)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        Log.d("user", userName +" added successfully");
-                                        Intent intent = new Intent(SignUpActivity.this, TripActivity.class);
-                                        startActivity(intent);
-                                        finish();
-                                    }
-                                    else{
-                                        Log.d("user", task.getException().toString());
-                                    }
-                                }
-                            });
-                }
-                else{
-                    Toast.makeText(SignUpActivity.this, "Enter correct details", Toast.LENGTH_SHORT).show();
-                }
+                Map<String , Object> movieMap = user.toHashMap();
+                db.collection("User").document(userName)
+                    .set(movieMap)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Log.d("user", userName +" added successfully");
+                            MainActivity.loggedInUserName = userName;
+                            Intent intent = new Intent(SignUpActivity.this, TripActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                        else{
+                            Log.d("user", task.getException().toString());
+                        }
+                        }
+                    });
+            }
+            else{
+                Toast.makeText(SignUpActivity.this, "Enter correct details", Toast.LENGTH_SHORT).show();
+            }
             }
         });
         btn_cancel.setOnClickListener(new View.OnClickListener() {

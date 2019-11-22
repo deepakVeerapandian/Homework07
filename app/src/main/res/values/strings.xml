@@ -21,4 +21,12 @@
     <string name="last_name">LastName :</string>
     <string name="pass_word">Password :</string>
     <string name="save">Save</string>
+    <string name="et_userName">UserName</string>
+    <string name="et_password">Password</string>
+    <string name="btnLogin">Login</string>
+    <string name="btn_signup">Signup</string>
+    <string name="tv_title">Title:</string>
+    <string name="tv_latitude">Latitude:</string>
+    <string name="tv_longitude">Longitude</string>
+    <string name="btn_addTrip">Add Trip</string>
 </resources>

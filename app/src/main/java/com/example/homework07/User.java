@@ -1,6 +1,7 @@
 package com.example.homework07;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class User {
     int userId;
@@ -22,7 +23,7 @@ public class User {
 
     String gender;
 
-    public User(HashMap<String,Object> hashMap)
+    public User(Map<String,Object> hashMap)
     {
         this.userId=(int)(long) hashMap.get("userId");
         this.userName=(String)hashMap.get("userName");
@@ -33,9 +34,9 @@ public class User {
         this.gender=(String)hashMap.get("gender");
     }
 
-    public HashMap<String,Object> toHashMap()
+    public Map toHashMap()
     {
-        HashMap<String,Object> hashing = new HashMap<String, Object>();
+        Map<String,Object> hashing = new HashMap<String, Object>();
         hashing.put("userId",this.userId);
         hashing.put("userName",this.userName);
         hashing.put("password",this.password);

@@ -28,25 +28,97 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.Map;
 
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
-//added rushiu
+
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
-    private FirebaseAuth firebaseAuth;
-    private FirebaseAuth.AuthStateListener authStateListener;
     private SignInButton signInButton;
     private GoogleApiClient mGoogleApiClient;
     private static final int RC_SIGN_IN = 1;
-    String name, email;
-    String idToken;
+    FirebaseFirestore db;
+    private  EditText et_userName;
+    private EditText et_password;
+    private Button btn_login;
+    private Button btn_signUp;
+    public static String loggedInUserName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        db=FirebaseFirestore.getInstance();
+        et_userName = findViewById(R.id.et_userName);
+        et_password = findViewById(R.id.et_password);
+        btn_login = findViewById(R.id.btnLogin);
+        btn_signUp = findViewById(R.id.btnSignUp);
+
+        btn_signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int flagError=0;
+                final String userName=et_userName.getText().toString();
+                final String password=et_password.getText().toString();
+                if(password.equals(""))
+                {
+                    flagError=1;
+                    et_password.setError("Enter password");
+                }
+                if(userName.equals(""))
+                {
+                    flagError=1;
+                    et_userName.setError("Enter UserName");
+                }
+                if(flagError==0)
+                {
+                    DocumentReference docRef = db.collection("User").document(userName);
+                    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                String passwordDb= (String) document.getData().get("password");
+                                if(password.equals(passwordDb))
+                                {
+                                    loggedInUserName = userName;
+                                    Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_LONG).show();
+                                    Intent  i=new Intent(MainActivity.this,TripActivity.class);
+                                    startActivity(i);
+                                }
+                            }
+                            else {
+                                Toast.makeText(MainActivity.this, "User does not exist", Toast.LENGTH_LONG).show();
+                            }
+                        } else {
+                            Log.d("demo", "get failed with ", task.getException());
+                        }
+                        }
+                    });
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this, "Enter correct details ", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -61,9 +133,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
         signInButton = findViewById(R.id.sign_in_button);
         signInButton.setOnClickListener(this);
-
     }
-
 
     @Override
     public void onClick(View v) {
@@ -85,15 +155,57 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
-           GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);
         }
     }
 
+
     private void handleSignInResult(GoogleSignInResult result){
         if(result.isSuccess()){
-            GoogleSignInAccount account = result.getSignInAccount();
-            Toast.makeText(this, account.getDisplayName(), Toast.LENGTH_SHORT).show();
+            final GoogleSignInAccount account = result.getSignInAccount();
+            loggedInUserName = account.getEmail();
+
+            DocumentReference docRef = db.collection("User").document(account.getEmail());
+            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Intent intent = new Intent(MainActivity.this, TripActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else
+                    {
+                        User user=new User(1,account.getEmail(),account.getIdToken(),account.getGivenName(),account.getDisplayName()," ","Male");
+                        Map<String , Object> userMap = user.toHashMap();
+                        db.collection("User").document(account.getEmail())
+                            .set(userMap)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+                                        Intent intent = new Intent(MainActivity.this, TripActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                    else{
+                                        Log.d("user", task.getException().toString());
+                                    }
+                                }
+                            });
+                        Toast.makeText(MainActivity.this, "User created with google sign in", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Log.d("demo", "get failed with ", task.getException());
+                }
+                }
+            });
+        }
+        else{
+            Toast.makeText(MainActivity.this, "failed with google sign in", Toast.LENGTH_LONG).show();
         }
     }
 
