@@ -11,6 +11,7 @@ public class Trips {
     String longitude;
     String coverPhoto;
     String createdBy;
+    String imgUrl;
     ArrayList<String> members = new ArrayList<String>();
 
     public Trips(String title, String latitude, String longitude, String coverPhoto,ArrayList<String> members,String createdBy) {
@@ -20,12 +21,14 @@ public class Trips {
         this.coverPhoto = coverPhoto;
         this.members = members;
         this.createdBy=createdBy;
+
     }
 
-    public Trips(String title, String createdBy, String coverPhoto) {
+    public Trips(String title, String createdBy, String coverPhoto,String imgUrl) {
         this.title = title;
         this.coverPhoto = coverPhoto;
         this.createdBy = createdBy;
+        this.imgUrl=imgUrl;
     }
 
     public Trips(Map<String,Object>hashMap)

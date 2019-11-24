@@ -1,25 +1,28 @@
 package com.example.homework07;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -30,8 +33,10 @@ public class TripActivity extends AppCompatActivity {
     private RecyclerView rv_tripItem;
     private RecyclerView.Adapter tripAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private Button btn_view_Users;
+    FirebaseStorage storage;
+    StorageReference storageReference;
 
-    final ArrayList<Trips>tripItemArrayList=new ArrayList<Trips>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,15 +44,30 @@ public class TripActivity extends AppCompatActivity {
         setContentView(R.layout.activity_trip);
         setTitle("Trips");
 
+        final ArrayList<Trips>tripItemArrayList=new ArrayList<Trips>();
+
         imgUser = findViewById(R.id.imgViewUserPage);
         rv_tripItem=findViewById(R.id.rv_tripItem);
         imgAddTrip = findViewById(R.id.imgAddTrip);
+        btn_view_Users=findViewById(R.id.btn_viewUsers);
         rv_tripItem.setHasFixedSize(true);
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+
 
         layoutManager = new LinearLayoutManager(this);
         rv_tripItem.setLayoutManager(layoutManager);
         FirebaseFirestore db;
         db=FirebaseFirestore.getInstance();
+
+
+        btn_view_Users.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(TripActivity.this, ViewUsersActivity.class);
+                startActivity(i);
+            }
+        });
 
         imgUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +85,7 @@ public class TripActivity extends AppCompatActivity {
             }
         });
 
+
         db.collection("Trips")
             .get()
             .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -72,11 +93,40 @@ public class TripActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
-                            String titleItem= (String) document.getData().get("title");
-                            String adminItem= (String)document.getData().get("admin");
-                            String coverPhotoItem= (String)document.getData().get("coverPhoto");
-                            Trips tripItem=new Trips(titleItem,adminItem,coverPhotoItem);
-                            tripItemArrayList.add(tripItem);
+                            final String titleItem= (String) document.getData().get("title");
+                            final String adminItem= (String)document.getData().get("admin");
+                            final String coverPhotoItem= (String)document.getData().get("coverPhoto");
+                            StorageReference listRef = storage.getReference().child("images/");
+                            listRef.listAll()
+                                    .addOnSuccessListener(new OnSuccessListener<ListResult>() {
+                                        @Override
+                                        public void onSuccess(ListResult listResult) {
+                                            for (final StorageReference item : listResult.getItems()) {
+                                                item.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Uri> task) {
+                                                        if(task.isSuccessful()){
+                                                            String imagePath = item.getPath();
+                                                            String [] x = imagePath.split("/");
+                                                            if(x[2].equals(titleItem)){
+                                                               String imageURL = task.getResult().toString();
+                                                               Trips t=new Trips(titleItem,adminItem,coverPhotoItem,imageURL);
+                                                               tripItemArrayList.add(t);
+                                                               tripAdapter.notifyDataSetChanged();
+                                                            }
+                                                        }
+                                                    };
+                                                });
+                                            }
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.d("demo...", "Image list view failue");
+                                        }
+                                    });
+
                         }
                         tripAdapter=new TripAdapter(tripItemArrayList);
                         rv_tripItem.setAdapter(tripAdapter);

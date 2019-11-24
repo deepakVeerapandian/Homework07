@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder>{
@@ -33,6 +35,8 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder>{
         Trips ti=tdata.get(position);
         holder.tv_tripsegment.setText(ti.title);
         holder.tv_adminSegment.setText(ti.createdBy);
+        Picasso.get().load(ti.imgUrl).into(holder.iv_coverPhotosegment);
+
         holder.tri=ti;
     }
 
@@ -52,6 +56,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder>{
             this.tri=tri;
             tv_adminSegment=itemView.findViewById(R.id.tv_adminSegment);
             tv_tripsegment=itemView.findViewById(R.id.tv_tripsegment);
+            iv_coverPhotosegment=itemView.findViewById(R.id.iv_coverPhotosegment);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

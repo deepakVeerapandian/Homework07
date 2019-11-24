@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddTripActivity"></activity>
+        <activity android:name=".FriendsDetailsActivity"></activity>
+        <activity android:name=".FriendDetails" />
+        <activity android:name=".ViewUsersActivity" />
+        <activity android:name=".AddTripActivity" />
         <activity android:name=".TripDetailsActivity" />
         <activity android:name=".ChatRoomActivity" />
         <activity android:name=".UserActivity" />
