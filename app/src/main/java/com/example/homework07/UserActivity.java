@@ -283,7 +283,7 @@ public class UserActivity extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     progressDialog.dismiss();
                     DocumentReference docRef = db.collection("User").document(MainActivity.loggedInUserName);
-                    docRef.update("imgUrl", "images/"+ MainActivity.loggedInUserName+".jpeg")
+                    docRef.update("imgUrl", "images/"+ MainActivity.loggedInUserName)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {

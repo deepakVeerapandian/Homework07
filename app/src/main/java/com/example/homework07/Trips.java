@@ -33,6 +33,9 @@ public class Trips {
         this.title=(String)hashMap.get("title");
         this.createdBy=(String)hashMap.get("admin");
         this.coverPhoto=(String)hashMap.get("coverPhoto");
+        this.latitude=(String)hashMap.get("latitude");
+        this.longitude=(String)hashMap.get("longitude");
+        this.members= (ArrayList<String>) hashMap.get("members");
     }
     public Map<String,Object> tripsToHashMap()
     {

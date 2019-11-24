@@ -58,6 +58,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder>{
 
                     Intent i=new Intent(itemView.getContext(),TripDetailsActivity.class);
                     i.putExtra("tripTitle",tri.title);
+                    i.putExtra("tripAdmin",tri.createdBy);
                     itemView.getContext().startActivity(i);
                 }
             });

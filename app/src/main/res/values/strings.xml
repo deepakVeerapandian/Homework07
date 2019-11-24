@@ -27,6 +27,10 @@
     <string name="btn_signup">Signup</string>
     <string name="tv_title">Title:</string>
     <string name="tv_latitude">Latitude:</string>
-    <string name="tv_longitude">Longitude</string>
+    <string name="tv_longitude">Longitude:</string>
     <string name="btn_addTrip">Add Trip</string>
+    <string name="join">Join</string>
+    <string name="delete">Delete</string>
+    <string name="chat">Chat</string>
+    <string name="admin">Admin :</string>
 </resources>

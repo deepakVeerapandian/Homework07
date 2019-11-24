@@ -4,6 +4,169 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingRight="10px"
     tools:context=".TripDetailsActivity">
+
+
+    <ImageView
+        android:id="@+id/iv_coverPhoto_tripDetails"
+        android:layout_width="271dp"
+        android:layout_height="168dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+    <TextView
+        android:id="@+id/tv_title_tripDetails"
+        android:layout_width="41dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/tv_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_coverPhoto_tripDetails" />
+
+    <EditText
+        android:id="@+id/et_title_tripDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toEndOf="@+id/tv_title_tripDetails"
+        app:layout_constraintTop_toBottomOf="@+id/iv_coverPhoto_tripDetails" />
+
+    <TextView
+        android:id="@+id/tv_latitude_tripDetails"
+        android:layout_width="66dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="52dp"
+        android:text="@string/tv_latitude"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_tripDetails" />
+
+    <EditText
+        android:id="@+id/et_latitude_tripDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_latitude_tripDetails"
+        app:layout_constraintTop_toBottomOf="@+id/et_title_tripDetails" />
+
+    <TextView
+        android:id="@+id/tv_longitude_tripDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="@string/tv_longitude"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_latitude_tripDetails" />
+
+    <EditText
+        android:id="@+id/et_longitude_tripDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_longitude_tripDetails"
+        app:layout_constraintTop_toBottomOf="@+id/et_latitude_tripDetails" />
+
+    <ImageView
+        android:id="@+id/imgCancel_tripDetails"
+        android:layout_width="35dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_delete" />
+
+    <LinearLayout
+        android:id="@+id/btnLinearLayout_tripDetails"
+        android:layout_width="379dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAdmin_tripDetails">
+
+        <Button
+            android:id="@+id/btnJoin_tripDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20px"
+            android:paddingRight="10px"
+            android:text="@string/join" />
+
+        <Button
+            android:id="@+id/btn_save_tripDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20px"
+            android:paddingRight="15px"
+            android:text="save" />
+
+        <Button
+            android:id="@+id/btnDelete_tripDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20px"
+            android:paddingRight="15px"
+            android:text="@string/delete" />
+
+        <Button
+            android:id="@+id/btnChat_tripDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chat" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtAdmin_tripDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="26dp"
+        android:text="@string/admin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_longitude_tripDetails" />
+
+    <TextView
+        android:id="@+id/txtValueAdmin_tripDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="17dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/txtAdmin_tripDetails"
+        app:layout_constraintTop_toBottomOf="@+id/et_longitude_tripDetails" />
+
+    <ImageView
+        android:id="@+id/imgMembers_tripDetails"
+        android:layout_width="64dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="123dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgCancel_tripDetails"
+        app:srcCompat="@android:drawable/ic_menu_myplaces" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
