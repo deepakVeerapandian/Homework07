@@ -29,8 +29,16 @@
     <string name="tv_latitude">Latitude:</string>
     <string name="tv_longitude">Longitude:</string>
     <string name="btn_addTrip">Add Trip</string>
+<<<<<<< HEAD
     <string name="join">Join</string>
     <string name="delete">Delete</string>
     <string name="chat">Chat</string>
     <string name="admin">Admin :</string>
+=======
+    <string name="btn_viewUsers">View Users</string>
+    <string name="tv_lbl_username_friendDetails">Usename:</string>
+    <string name="tv_lbl_firstName_friendsDetails">First Name:</string>
+    <string name="tv_lbl_LastName_friendsDetails">Last Name</string>
+    <string name="tv_lbl_gender">Gender:</string>
+>>>>>>> 1d69065f6e6fb541dbd4abc1645c28b8192b9e1b
 </resources>

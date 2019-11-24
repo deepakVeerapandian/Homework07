@@ -21,6 +21,11 @@ public class User {
         this.gender = gender;
     }
 
+    @Override
+    public String toString() {
+        return userName;
+    }
+
     String gender;
 
     public User(Map<String,Object> hashMap)
