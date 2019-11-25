@@ -35,7 +35,7 @@ public class TripActivity extends AppCompatActivity {
     private RecyclerView rv_tripItem;
     private RecyclerView.Adapter tripAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private Button btn_view_Users;
+    private ImageView btn_view_Users;
     FirebaseStorage storage;
     StorageReference storageReference;
 
