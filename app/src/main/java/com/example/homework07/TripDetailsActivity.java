@@ -243,7 +243,7 @@ public class TripDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DocumentReference docRef = db.collection("Trips").document(tripTitle);
-                memebers.add(tripAdmin);
+                memebers.add(MainActivity.loggedInUserName);
                 docRef.update("members", memebers)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
@@ -263,5 +263,32 @@ public class TripDetailsActivity extends AppCompatActivity {
             }
         });
 
+        btn_deleteTrip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                db.collection("Trips").document(tripTitle)
+                        .delete()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d("Trips", tripTitle +" deleted successfully");
+                                Toast.makeText(TripDetailsActivity.this, "Trip deleted", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(TripDetailsActivity.this, TripActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
+            }
+        });
+
+        btn_chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TripDetailsActivity.this, ChatRoomActivity.class);
+                intent.putExtra("tripTitle", tripTitle);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }

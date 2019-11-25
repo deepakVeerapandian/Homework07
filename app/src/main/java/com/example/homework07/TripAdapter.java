@@ -1,6 +1,9 @@
 package com.example.homework07;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -37,6 +41,11 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder>{
         holder.tv_adminSegment.setText(ti.createdBy);
         Picasso.get().load(ti.imgUrl).into(holder.iv_coverPhotosegment);
 
+        Resources res = holder.itemView.getContext().getResources();
+        int color = res.getColor(R.color.listColor);
+        if(position%2 == 0)
+            holder.parentLayout.setBackgroundColor(color);
+
         holder.tri=ti;
     }
 
@@ -50,6 +59,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder>{
         TextView tv_adminSegment;
         Trips tri;
         ImageView iv_coverPhotosegment;
+        ConstraintLayout parentLayout;
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -57,6 +67,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder>{
             tv_adminSegment=itemView.findViewById(R.id.tv_adminSegment);
             tv_tripsegment=itemView.findViewById(R.id.tv_tripsegment);
             iv_coverPhotosegment=itemView.findViewById(R.id.iv_coverPhotosegment);
+            parentLayout=itemView.findViewById(R.id.layout_listItem);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

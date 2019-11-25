@@ -1,5 +1,7 @@
 package com.example.homework07;
 
+import android.graphics.Bitmap;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,9 +14,16 @@ public class Trips {
     String coverPhoto;
     String createdBy;
     String imgUrl;
+//    Bitmap byteImage;
     ArrayList<String> members = new ArrayList<String>();
 
-    public Trips(String title, String latitude, String longitude, String coverPhoto,ArrayList<String> members,String createdBy) {
+//    public Trips(String title, String createdBy, Bitmap byteImage) {
+//        this.title = title;
+//        this.createdBy = createdBy;
+//        this.byteImage = byteImage;
+//    }
+
+    public Trips(String title, String latitude, String longitude, String coverPhoto, ArrayList<String> members, String createdBy) {
         this.title = title;
         this.latitude = latitude;
         this.longitude = longitude;

@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -54,7 +56,6 @@ public class TripActivity extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-
         layoutManager = new LinearLayoutManager(this);
         rv_tripItem.setLayoutManager(layoutManager);
         FirebaseFirestore db;
@@ -87,54 +88,35 @@ public class TripActivity extends AppCompatActivity {
 
 
         db.collection("Trips")
-            .get()
-            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful()) {
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            final String titleItem= (String) document.getData().get("title");
-                            final String adminItem= (String)document.getData().get("admin");
-                            final String coverPhotoItem= (String)document.getData().get("coverPhoto");
-                            StorageReference listRef = storage.getReference().child("images/");
-                            listRef.listAll()
-                                    .addOnSuccessListener(new OnSuccessListener<ListResult>() {
-                                        @Override
-                                        public void onSuccess(ListResult listResult) {
-                                            for (final StorageReference item : listResult.getItems()) {
-                                                item.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<Uri> task) {
-                                                        if(task.isSuccessful()){
-                                                            String imagePath = item.getPath();
-                                                            String [] x = imagePath.split("/");
-                                                            if(x[2].equals(titleItem)){
-                                                               String imageURL = task.getResult().toString();
-                                                               Trips t=new Trips(titleItem,adminItem,coverPhotoItem,imageURL);
-                                                               tripItemArrayList.add(t);
-                                                               tripAdapter.notifyDataSetChanged();
-                                                            }
-                                                        }
-                                                    };
-                                                });
-                                            }
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Log.d("demo...", "Image list view failue");
-                                        }
-                                    });
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                final String titleItem= (String) document.getData().get("title");
+                                final String adminItem= (String)document.getData().get("admin");
+                                final String coverPhotoItem= (String)document.getData().get("coverPhoto");
+                                StorageReference listRef = storage.getReference().child("images/"+titleItem);
 
+                                listRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+                                        Log.e("Tuts+", "uri: " + uri.toString());
+                                        Trips t=new Trips(titleItem,adminItem,coverPhotoItem,uri.toString());
+                                        tripItemArrayList.add(t);
+                                        tripAdapter.notifyDataSetChanged();
+                                    }
+                                });
+                            }
+                            tripAdapter=new TripAdapter(tripItemArrayList);
+                            rv_tripItem.setAdapter(tripAdapter);
+
+                        } else {
+                            Log.d("tag", "Error getting documents: ", task.getException());
                         }
-                        tripAdapter=new TripAdapter(tripItemArrayList);
-                        rv_tripItem.setAdapter(tripAdapter);
-
-                    } else {
-                        Log.d("tag", "Error getting documents: ", task.getException());
                     }
-                }
-            });
+                });
+
     }
 }

@@ -6,4 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".ChatRoomActivity">
 
+    <EditText
+        android:id="@+id/editTextTypeMessage_chat"
+        android:layout_width="313dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="31dp"
+        android:ems="10"
+        android:hint="@string/Type"
+        android:inputType="textMultiLine"
+        android:lines="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgViewSend_chat"
+        android:layout_width="68dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/imgViewGallery_chat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_send" />
+
+    <ImageView
+        android:id="@+id/imgViewGallery_chat"
+        android:layout_width="47dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="31dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recylerViewChat"
+        android:layout_width="411dp"
+        android:layout_height="563dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
