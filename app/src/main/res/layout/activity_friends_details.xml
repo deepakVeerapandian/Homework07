@@ -9,9 +9,11 @@
     <TextView
         android:id="@+id/tv_lbl_username_friendDetails"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="34dp"
         android:layout_marginTop="56dp"
         android:text="@string/tv_lbl_username_friendDetails"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,74 +21,85 @@
 
     <TextView
         android:id="@+id/tv_usernamevalue_friendsDetails"
-        android:layout_width="91dp"
-        android:layout_height="31dp"
+        android:layout_width="185dp"
+        android:layout_height="34dp"
         android:layout_marginTop="56dp"
+        android:textSize="20sp"
+        android:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toEndOf="@+id/tv_lbl_username_friendDetails"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_lbl_firstName_friendsDetails"
-        android:layout_width="76dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="111dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="28dp"
         android:text="@string/tv_lbl_firstName_friendsDetails"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintHorizontal_bias="0.103"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_lbl_username_friendDetails" />
 
     <TextView
         android:id="@+id/tv_firstNamevalue_friendDetails"
-        android:layout_width="85dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="183dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="28dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toEndOf="@+id/tv_lbl_firstName_friendsDetails"
         app:layout_constraintTop_toBottomOf="@+id/tv_usernamevalue_friendsDetails" />
 
     <TextView
         android:id="@+id/tv_lbl_LastName_friendsDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_width="111dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="28dp"
         android:text="@string/tv_lbl_LastName_friendsDetails"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintHorizontal_bias="0.103"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_lbl_firstName_friendsDetails" />
 
     <TextView
         android:id="@+id/tv_lastnamevalue_friendDetails"
-        android:layout_width="77dp"
-        android:layout_height="33dp"
+        android:layout_width="174dp"
+        android:layout_height="37dp"
         android:layout_marginTop="24dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="0.368"
         app:layout_constraintStart_toEndOf="@+id/tv_lbl_LastName_friendsDetails"
         app:layout_constraintTop_toBottomOf="@+id/tv_firstNamevalue_friendDetails" />
 
     <TextView
         android:id="@+id/tv_lbl_Gender"
-        android:layout_width="61dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="95dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="16dp"
         android:text="@string/tv_lbl_gender"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintHorizontal_bias="0.148"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_lbl_LastName_friendsDetails" />
 
     <TextView
         android:id="@+id/tv_genderValue_friendsDetails"
-        android:layout_width="73dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="180dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="16dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.549"
+        app:layout_constraintHorizontal_bias="0.415"
         app:layout_constraintStart_toEndOf="@+id/tv_lbl_Gender"
         app:layout_constraintTop_toBottomOf="@+id/tv_lastnamevalue_friendDetails" />
 
@@ -96,21 +109,20 @@
         android:layout_height="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
+        app:layout_constraintHorizontal_bias="0.989"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022"
+        app:layout_constraintVertical_bias="0.008"
         app:srcCompat="@android:drawable/ic_delete" />
 
     <ImageView
         android:id="@+id/iv_friendsImage_friendsDetails"
-        android:layout_width="249dp"
-        android:layout_height="144dp"
+        android:layout_width="236dp"
+        android:layout_height="215dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_genderValue_friendsDetails"
-        app:layout_constraintVertical_bias="0.386"
+        app:layout_constraintVertical_bias="0.189"
         app:srcCompat="@android:drawable/ic_menu_camera" />
 </androidx.constraintlayout.widget.ConstraintLayout>

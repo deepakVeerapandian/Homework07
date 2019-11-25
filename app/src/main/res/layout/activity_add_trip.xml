@@ -19,12 +19,15 @@
 
     <TextView
         android:id="@+id/tv_title_addTrip"
-        android:layout_width="41dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="45dp"
+        android:layout_width="wrap_content"
+        android:layout_height="31dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="44dp"
         android:text="@string/tv_title"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintHorizontal_bias="0.162"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_coverPhoto_addTrip" />
 
@@ -35,6 +38,7 @@
         android:layout_marginTop="36dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toEndOf="@+id/tv_title_addTrip"
@@ -42,12 +46,14 @@
 
     <TextView
         android:id="@+id/tv_latitude_addTrip"
-        android:layout_width="66dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="93dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="44dp"
         android:text="@string/tv_latitude"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title_addTrip" />
 
@@ -55,21 +61,25 @@
         android:id="@+id/et_latitude_addTrip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="104dp"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="numberSigned|numberDecimal"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_latitude_addTrip"
+        app:layout_constraintHorizontal_bias="0.859"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_title_addTrip" />
 
     <TextView
         android:id="@+id/tv_longitude_addTrip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="48dp"
         android:text="@string/tv_longitude"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_latitude_addTrip" />
 
@@ -77,23 +87,27 @@
         android:id="@+id/et_longitude_addTrip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="numberSigned|numberDecimal"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/et_latitude_addTrip"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_longitude_addTrip"
-        app:layout_constraintTop_toBottomOf="@+id/et_latitude_addTrip" />
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toEndOf="@+id/tv_latitude_addTrip"
+        app:layout_constraintTop_toBottomOf="@+id/et_title_addTrip"
+        app:layout_constraintVertical_bias="0.483" />
 
     <Button
         android:id="@+id/btn_addtripDetails_addTrip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="45dp"
         android:text="@string/btn_addTrip"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_longitude_addTrip" />
+        app:layout_constraintTop_toBottomOf="@+id/et_latitude_addTrip" />
 
     <ImageView
         android:id="@+id/imgCancel_addTrip"
@@ -104,4 +118,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_delete" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
