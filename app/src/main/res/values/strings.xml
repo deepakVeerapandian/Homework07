@@ -36,6 +36,6 @@
     <string name="btn_viewUsers">View Users</string>
     <string name="tv_lbl_username_friendDetails">Usename:</string>
     <string name="tv_lbl_firstName_friendsDetails">First Name:</string>
-    <string name="tv_lbl_LastName_friendsDetails">Last Name</string>
+    <string name="tv_lbl_LastName_friendsDetails">Last Name:</string>
     <string name="tv_lbl_gender">Gender:</string>
 </resources>

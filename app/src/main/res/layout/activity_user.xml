@@ -14,6 +14,7 @@
         android:layout_marginTop="70dp"
         android:text="@string/user_name"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,9 +23,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="20dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,6 +38,7 @@
         android:layout_marginTop="35dp"
         android:text="@string/first_name"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtUserName_user" />
 
@@ -47,6 +50,7 @@
         android:layout_marginTop="35dp"
         android:text="@string/last_name"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtFirstName_user" />
 
@@ -54,10 +58,11 @@
         android:id="@+id/et_firstName_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_UserName_user" />
 
@@ -65,10 +70,11 @@
         android:id="@+id/et_lastName_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="20dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_firstName_user" />
 
@@ -80,6 +86,7 @@
         android:layout_marginTop="35dp"
         android:text="@string/pass_word"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLastName_user" />
 
@@ -87,10 +94,11 @@
         android:id="@+id/et_password_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="20dp"
         android:ems="10"
         android:inputType="textPassword"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_lastName_user" />
 
@@ -98,7 +106,7 @@
         android:id="@+id/radioGroup_user"
         android:layout_width="205dp"
         android:layout_height="45dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="32dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.854"
@@ -110,14 +118,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/male" />
+            android:text="@string/male"
+            android:textSize="20sp" />
 
         <RadioButton
             android:id="@+id/radioBtnFemale_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/female" />
+            android:text="@string/female"
+            android:textSize="20sp" />
     </RadioGroup>
 
     <TextView
@@ -128,6 +138,7 @@
         android:layout_marginTop="44dp"
         android:text="@string/gender"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtpassword_user" />
 
@@ -161,7 +172,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logout" />
+        app:srcCompat="@android:drawable/ic_lock_power_off" />
 
     <ImageView
         android:id="@+id/imgViewAvatar_user"

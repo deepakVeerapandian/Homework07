@@ -103,6 +103,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                                     Intent  i=new Intent(MainActivity.this,TripActivity.class);
                                     startActivity(i);
                                 }
+                                else
+                                {
+                                    Toast.makeText(MainActivity.this, "Password does not match", Toast.LENGTH_LONG).show();
+                                }
                             }
                             else {
                                 Toast.makeText(MainActivity.this, "User does not exist", Toast.LENGTH_LONG).show();
