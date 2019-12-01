@@ -113,7 +113,7 @@ public class TripDetailsActivity extends AppCompatActivity {
                         et_latitude.setText(trips.latitude);
                         et_longitude.setText(trips.longitude);
                         memebers.addAll(trips.members);
-                        if(memebers.contains(tripAdmin)){
+                        if(memebers.contains(MainActivity.loggedInUserName)||memebers.contains(tripAdmin)){
                             btn_chat.setVisibility(View.VISIBLE);
                             btn_joinTrip.setVisibility(View.INVISIBLE);
                         }

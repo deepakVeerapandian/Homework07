@@ -5,15 +5,17 @@
     android:id="@+id/layout_listItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
 
     <TextView
         android:id="@+id/tv_message_chat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:autoSizeTextType="uniform"
+        android:fontFamily="sans-serif-black"
         android:text="TextView"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,22 +26,20 @@
         android:id="@+id/tv_msgDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="30dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgChat_chat" />
+        app:layout_constraintTop_toTopOf="@+id/tv_message_chat" />
 
     <ImageView
         android:id="@+id/imgChat_chat"
-        android:layout_width="122dp"
-        android:layout_height="108dp"
-        android:layout_marginTop="13dp"
+        android:layout_width="100dp"
+        android:layout_height="71dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_msgDetails"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_message_chat"
         app:srcCompat="@drawable/googleg_standard_color_18" />
 </androidx.constraintlayout.widget.ConstraintLayout>

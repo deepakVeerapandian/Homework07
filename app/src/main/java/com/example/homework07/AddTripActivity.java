@@ -95,6 +95,7 @@ public class AddTripActivity extends AppCompatActivity {
             String longitude=et_longitude.getText().toString();
             String coverPhoto= "";
             ArrayList<String> mem=new ArrayList<String>();
+            mem.add(MainActivity.loggedInUserName);
             int errorFlag=0;
             if(title.equals("")){
                 et_title.setError("Enter a valid title");
@@ -114,7 +115,7 @@ public class AddTripActivity extends AppCompatActivity {
                 errorFlag=1;
 
             }
-            if(errorFlag == 0)      //deleting the existing user and creating a new user
+            if(errorFlag == 0)
             {
                 Trips trips=new Trips(title, latitude, longitude, coverPhoto, mem, MainActivity.loggedInUserName);
                 Map<String,Object> trip=trips.tripsToHashMap();

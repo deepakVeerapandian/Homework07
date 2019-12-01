@@ -39,7 +39,6 @@ public class TripActivity extends AppCompatActivity {
     FirebaseStorage storage;
     StorageReference storageReference;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
