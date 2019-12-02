@@ -163,6 +163,7 @@ public class UserActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(UserActivity.this, TripActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -172,6 +173,7 @@ public class UserActivity extends AppCompatActivity {
                 Intent intent = new Intent(UserActivity.this, MainActivity.class);
                 MainActivity.loggedInUserName = "";
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -231,6 +233,7 @@ public class UserActivity extends AppCompatActivity {
                                     if(task.isSuccessful()){
                                         uploadImage();
                                         Log.d("user", userName +" added successfully");
+                                        Toast.makeText(UserActivity.this, "Changes are saved", Toast.LENGTH_SHORT).show();
                                     }
                                     else{
                                         Log.d("user", task.getException().toString());

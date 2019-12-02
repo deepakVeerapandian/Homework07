@@ -38,6 +38,7 @@ public class TripActivity extends AppCompatActivity {
     private ImageView btn_view_Users;
     FirebaseStorage storage;
     StorageReference storageReference;
+//    public static int flagEdit=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +73,7 @@ public class TripActivity extends AppCompatActivity {
         imgUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                flagEdit=1;
                 Intent intent = new Intent(TripActivity.this, UserActivity.class);
                 startActivity(intent);
             }

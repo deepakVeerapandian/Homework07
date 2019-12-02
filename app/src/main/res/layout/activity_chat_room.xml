@@ -9,7 +9,7 @@
     <EditText
         android:id="@+id/editTextTypeMessage_chat"
         android:layout_width="315dp"
-        android:layout_height="88dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
         android:ems="10"
@@ -22,7 +22,7 @@
     <ImageView
         android:id="@+id/imgViewSend_chat"
         android:layout_width="55dp"
-        android:layout_height="46dp"
+        android:layout_height="50dp"
         android:layout_marginTop="27dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
@@ -35,19 +35,28 @@
         android:id="@+id/imgViewGallery_chat"
         android:layout_width="51dp"
         android:layout_height="57dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="23dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgViewSend_chat"
         app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recylerViewChat"
-        android:layout_width="411dp"
-        android:layout_height="563dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="409dp"
+        android:layout_height="543dp"
+        android:layout_marginTop="44dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewChatDelete"
+        android:layout_width="51dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_delete" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

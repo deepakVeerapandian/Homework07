@@ -48,6 +48,7 @@ public class ChatRoomActivity extends AppCompatActivity{
     RecyclerView chatRecylerView;
     ImageView iv_sendButton;
     ImageView iv_openGallery;
+    ImageView iv_chatDelete;
     EditText et_messages;
 
     FirebaseFirestore db;
@@ -77,6 +78,7 @@ public class ChatRoomActivity extends AppCompatActivity{
         iv_sendButton = findViewById(R.id.imgViewSend_chat);
         iv_openGallery = findViewById(R.id.imgViewGallery_chat);
         et_messages = findViewById(R.id.editTextTypeMessage_chat);
+        iv_chatDelete = findViewById(R.id.imageViewChatDelete);
         rv_chat = findViewById(R.id.recylerViewChat);
 
         layoutManager = new LinearLayoutManager(this);
@@ -118,31 +120,14 @@ public class ChatRoomActivity extends AppCompatActivity{
         iv_sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                isImageSent = false;
-                sendMessage("0");
-//                String message = et_messages.getText().toString();
-//                String msgID = UUID.randomUUID().toString();
-//                String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
-//                String currentTime = formatDateTimeFromDate(DATE_FORMAT, Calendar.getInstance().getTime());
-//
-//                chatsFromDB.add(new ChatObject(MainActivity.loggedInUserName, tripTitle, msgID, message, currentTime));
-//                Chats chat = new Chats(chatsFromDB);
-//                db.collection("Chats").document(tripTitle)
-//                        .set(chat.ToHashMap())
-//                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<Void> task) {
-//                                if(task.isSuccessful()){
-//                                    Log.d("chats",  "chat added successfully");
-////                                    chatAdapter = new ChatAdapter(chatsFromDB);
-////                                    rv_chat.setAdapter(chatAdapter);
-//                                    et_messages.setText("");
-//                                }
-//                                else{
-//                                    Log.d("trip", task.getException().toString());
-//                                }
-//                            }
-//                        });
+                String msg = et_messages.getText().toString();
+                if(msg.equals("")){
+                    Toast.makeText(ChatRoomActivity.this, "Enter a message", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    sendMessage("0");
+                }
+
             }
         });
 
@@ -153,6 +138,15 @@ public class ChatRoomActivity extends AppCompatActivity{
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
+            }
+        });
+
+        iv_chatDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ChatRoomActivity.this, TripActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -197,23 +191,6 @@ public class ChatRoomActivity extends AppCompatActivity{
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
-//                            DocumentReference docRef = db.collection("Chats").document(tripTitle);
-//                            docRef.update("imgUrl", "chats/"+ )
-//                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                        @Override
-//                                        public void onSuccess(Void aVoid) {
-//                                            Log.d("user", "Image URL stored in DB!");
-////                                            Intent intent = new Intent(UserActivity.this, TripActivity.class);
-////                                            startActivity(intent);
-////                                            finish();
-//                                        }
-//                                    })
-//                                    .addOnFailureListener(new OnFailureListener() {
-//                                        @Override
-//                                        public void onFailure(@NonNull Exception e) {
-//                                            Log.w("user", "Error updating document", e);
-//                                        }
-//                                    });
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
